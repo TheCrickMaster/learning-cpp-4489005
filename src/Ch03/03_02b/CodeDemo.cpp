@@ -7,10 +7,34 @@
 
 enum class cow_purpose {dairy, meat, hide, pet};
 
-struct cow{
+class cow{ // Note that we have changed from struct to class. This is no longer public
+public: // We use the public keyword to make the members of the class accessible from outside the class 
     std::string name;
     int age;
     cow_purpose purpose;
+};
+
+class dog{
+private: // We use the private keyword to make the members of the class inaccessible from outside the class
+    std::string name;
+    int age;
+    std::string breed;
+public:
+    dog(std::string inputName, int inputAge, std::string inputBreed){ // Constructor
+        name = inputName;
+        age = inputAge;
+        breed = inputBreed;
+    }
+public:
+    std::string get_name() const{ // basic getter function
+        return name;
+    }
+    int get_age() const{ // basic getter function
+        return age;
+    }
+    std::string get_breed() const{ // basic getter function
+        return breed;
+    }
 };
 
 int main(){
