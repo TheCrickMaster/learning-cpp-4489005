@@ -5,10 +5,12 @@
 #include <iostream>
 
 int main(){
-    int nums[5] = {1,23,32,24,337};
+    const int LENGTH = 5;
+    int nums[LENGTH] = {1,23,32,24,337};
     float result; 
 
-    // Write your code here
+    float addition = (nums[0] + nums[1] + nums[2] + nums[3] + nums[4]);
+    result = addition / LENGTH;
     
     std::cout << "The average is " << result << std::endl;
     
