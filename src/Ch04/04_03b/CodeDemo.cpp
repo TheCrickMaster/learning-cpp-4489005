@@ -8,7 +8,18 @@
 int main(){
     std::vector<int> numbers = {12, 25, 31, 47, 58};
     
-    std::vector<int>::iterator ptr = numbers.begin();
+    auto ptr = numbers.begin(); // Use of auto to assign variable type
+
+    while (ptr != numbers.end()) { // While loop to iterate through the numbers vector
+        std::cout << *ptr << std::endl;
+        ptr++;
+    }
+
+    int i = 0;
+    do { // Do-While loop to iterate through the numbers vector
+        std::cout << numbers[i] << std::endl;
+        i++;
+    } while (i < numbers.size());
     
     std::cout << std::endl << std::endl;
     return (0);
