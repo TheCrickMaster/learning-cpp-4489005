@@ -7,12 +7,16 @@
 #include "records.h"
 
 void initialize(StudentRecords&);
+void initialize(StudentRecords&, std::ifstream&);
 
 int main(){
     int id;
     StudentRecords SR;
+    std::ifstream inFile; // Create file stream object
+    std::ofstream outFile; // Create file steam object
     
-    initialize(SR);
+    initialize(SR, inFile); // Initialize the student records object
+    SR.report_file(outFile); // Call a member function to write to a file
 
     std::cout << "Enter a student ID: " << std::flush;
     std::cin >> id;
@@ -38,4 +42,23 @@ void initialize(StudentRecords& srec){
     srec.add_grade(2, 1, 'A'); 
     srec.add_grade(2, 2, 'A');
     srec.add_grade(2, 4, 'B');
+}
+void initialize(StudentRecords& srec, std::ifstream& inFile){
+    int id;
+    std::string name;
+    std::string course;
+    int credits;
+    char grade;
+
+    inFile.open("records.txt");
+    if (inFile.fail())
+        std::cout << std::endl << "Couldn't open the file!" << std::endl;
+    else{
+        while (inFile >> id >> name >> course >> credits >> grade){
+            srec.add_student(id, name);
+            srec.add_course(id, course, credits);
+            srec.add_grade(id, credits, grade);
+        }
+        inFile.close();
+    }
 }
